@@ -1,16 +1,19 @@
 <?php
 
-app()->singleton('App\Example', function(){
+use App\Repositories\UserRepository;
 
-    dd('called');
+use App\Services\Twitter;
 
-    return new \App\Example;
-});
+//app()->singleton('App\Services\Twitter', function(){
+//
+//    return new \App\Services\Twitter('tweetweet');
+//
+//});
 
 
-Route::get('/', function () {
+Route::get('/', function (UserRepository $users) {
 
-    dd(app('App\Example'));
+    dd($users);
 
     return view('welcome');
 });
