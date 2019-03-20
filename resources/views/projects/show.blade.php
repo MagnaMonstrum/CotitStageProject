@@ -22,7 +22,7 @@
         <div>
 
 
-            <form method="POST" action="/project/{{ $project->id }}/task/{{ $task->id }}">
+            <form method="POST" action="/task/{{ $task->id }}">
 
                 @method('PATCH')
                 @csrf
