@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Project;
 
 class ProjectTasksController extends Controller
 {
-    public function update(Task $task)
+    public function store(Project $project)
     {
+        $attributes = request()->validate(['description' => 'required']);
 
-        $task->update([
-            'completed' => request()->has('completed')
-        ]);
+        $project->addTask($attributes);
 
         return back();
-
     }
 
 }

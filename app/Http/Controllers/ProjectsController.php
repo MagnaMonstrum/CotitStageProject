@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use Illuminate\Filesystem\Filesystem;
+
 
 class ProjectsController extends Controller
 {
@@ -15,7 +17,7 @@ class ProjectsController extends Controller
         return view('projects.index', compact('projects'));
     }
 
-    public function show(Project $project)
+    public function show(Filesystem $file)
     {
 
         return view('projects.show', compact('project'));
