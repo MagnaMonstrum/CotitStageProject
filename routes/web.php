@@ -11,9 +11,9 @@ use App\Services\Twitter;
 //});
 
 
-Route::get('/', function (UserRepository $users) {
+Route::get('/', function (Twitter $twitter) {
 
-    dd($users);
+    dd($twitter);
 
     return view('welcome');
 });
@@ -26,6 +26,9 @@ Route::post('/completed-task/{task}', 'CompletedTasksController@store');
 Route::delete('/completed-task/{task}', 'CompletedTasksController@destroy');
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
@@ -49,3 +52,4 @@ Route::delete('/completed-task/{task}', 'CompletedTasksController@destroy');
 | contains the "web" middleware group. Now create something great!
 |
 */
+
