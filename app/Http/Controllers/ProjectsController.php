@@ -27,6 +27,11 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
 
+//        $this->authorize('update', $project);
+//        abort_if($project->owner_id !== auth()->id(), 403);
+
+//        abort_if(\Gate::denies('update', $project),403);
+
         return view('projects.show', compact('project'));
 
     }
