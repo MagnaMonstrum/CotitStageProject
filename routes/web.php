@@ -11,11 +11,10 @@ use App\Services\Twitter;
 //});
 
 
-Route::get('/', function (Twitter $twitter) {
+Route::get('/', function () {
 
-    dd($twitter);
 
-    return view('welcome');
+    return view('home');
 });
 
 
