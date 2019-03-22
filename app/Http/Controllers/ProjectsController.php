@@ -12,7 +12,7 @@ class ProjectsController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth');
+    $this->middleware('auth');
 
     }
     public function index()
@@ -27,8 +27,9 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
 
+        abort_if($project->owner_id !== auth()->id(), 403);
+        
 //        $this->authorize('update', $project);
-//        abort_if($project->owner_id !== auth()->id(), 403);
 
 //        abort_if(\Gate::denies('update', $project),403);
 
@@ -76,9 +77,18 @@ class ProjectsController extends Controller
 
     public function destroy(Project $project)
     {
+
+
+
         $project->delete();
 
-        return redirect('/projects');
+        if ($project->trashed()) {
+
+         return redirect('/projects');
+
+        }
+
+
 
     }
 }
